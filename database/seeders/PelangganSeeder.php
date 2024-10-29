@@ -18,7 +18,7 @@ class PelangganSeeder extends Seeder
                 'jumlah_poin' => rand(1000, 5000),
                 'created_at' => now(),
                 'updated_at' => now(),
-                'deleted_at' => now(),
+                'deleted_at' => null,
             ],
             [
                 'id_pelanggan' => 2,
@@ -28,7 +28,7 @@ class PelangganSeeder extends Seeder
                 'jumlah_poin' => rand(1000, 5000),
                 'created_at' => now(),
                 'updated_at' => now(),
-                'deleted_at' => now(),
+                'deleted_at' => null,
             ],
             [
                 'id_pelanggan' => 3,
@@ -38,7 +38,7 @@ class PelangganSeeder extends Seeder
                 'jumlah_poin' => rand(1000, 5000),
                 'created_at' => now(),
                 'updated_at' => now(),
-                'deleted_at' => now(),
+                'deleted_at' => null,
             ],
             [
                 'id_pelanggan' => 4,
@@ -48,7 +48,7 @@ class PelangganSeeder extends Seeder
                 'jumlah_poin' => rand(1000, 5000),
                 'created_at' => now(),
                 'updated_at' => now(),
-                'deleted_at' => now(),
+                'deleted_at' => null,
             ],
             [
                 'id_pelanggan' => 5,
@@ -58,7 +58,7 @@ class PelangganSeeder extends Seeder
                 'jumlah_poin' => rand(1000, 5000),
                 'created_at' => now(),
                 'updated_at' => now(),
-                'deleted_at' => now(),
+                'deleted_at' => null,
             ],
             [
                 'id_pelanggan' => 6,
@@ -68,7 +68,7 @@ class PelangganSeeder extends Seeder
                 'jumlah_poin' => rand(1000, 5000),
                 'created_at' => now(),
                 'updated_at' => now(),
-                'deleted_at' => now(),
+                'deleted_at' => null,
             ],
             [
                 'id_pelanggan' => 7,
@@ -78,7 +78,7 @@ class PelangganSeeder extends Seeder
                 'jumlah_poin' => rand(1000, 5000),
                 'created_at' => now(),
                 'updated_at' => now(),
-                'deleted_at' => now(),
+                'deleted_at' => null,
             ],
             [
                 'id_pelanggan' => 8,
@@ -88,7 +88,7 @@ class PelangganSeeder extends Seeder
                 'jumlah_poin' => rand(1000, 5000),
                 'created_at' => now(),
                 'updated_at' => now(),
-                'deleted_at' => now(),
+                'deleted_at' => null,
             ],
             [
                 'id_pelanggan' => 9,
@@ -98,7 +98,7 @@ class PelangganSeeder extends Seeder
                 'jumlah_poin' => rand(1000, 5000),
                 'created_at' => now(),
                 'updated_at' => now(),
-                'deleted_at' => now(),
+                'deleted_at' => null,
             ],
             [
                 'id_pelanggan' => 10,
@@ -108,7 +108,7 @@ class PelangganSeeder extends Seeder
                 'jumlah_poin' => rand(1000, 5000),
                 'created_at' => now(),
                 'updated_at' => now(),
-                'deleted_at' => now(),
+                'deleted_at' => null,
             ],
         ]);
     }

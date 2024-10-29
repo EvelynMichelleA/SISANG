@@ -18,7 +18,7 @@ class MenuSeeder extends Seeder
                 'gambar_menu' => 'menu/image1.jpg',
                 'created_at' => now(),
                 'updated_at' => now(),
-                'deleted_at' => now(),
+                'deleted_at' => null,
             ],
             [
                 'id_menu' => 2,
@@ -28,7 +28,7 @@ class MenuSeeder extends Seeder
                 'gambar_menu' => 'menu/image2.jpg',
                 'created_at' => now(),
                 'updated_at' => now(),
-                'deleted_at' => now(),
+                'deleted_at' => null,
             ],
             [
                 'id_menu' => 3,
@@ -38,7 +38,7 @@ class MenuSeeder extends Seeder
                 'gambar_menu' => 'menu/image3.jpg',
                 'created_at' => now(),
                 'updated_at' => now(),
-                'deleted_at' => now(),
+                'deleted_at' => null,
             ],
             [
                 'id_menu' => 4,
@@ -48,7 +48,7 @@ class MenuSeeder extends Seeder
                 'gambar_menu' => 'menu/image4.jpg',
                 'created_at' => now(),
                 'updated_at' => now(),
-                'deleted_at' => now(),
+                'deleted_at' => null,
             ],
             [
                 'id_menu' => 5,
@@ -58,7 +58,7 @@ class MenuSeeder extends Seeder
                 'gambar_menu' => 'menu/image5.jpg',
                 'created_at' => now(),
                 'updated_at' => now(),
-                'deleted_at' => now(),
+                'deleted_at' => null,
             ],
             [
                 'id_menu' => 6,
@@ -68,7 +68,7 @@ class MenuSeeder extends Seeder
                 'gambar_menu' => 'menu/image6.jpg',
                 'created_at' => now(),
                 'updated_at' => now(),
-                'deleted_at' => now(),
+                'deleted_at' => null,
             ],
             [
                 'id_menu' => 7,
@@ -78,7 +78,7 @@ class MenuSeeder extends Seeder
                 'gambar_menu' => 'menu/image7.jpg',
                 'created_at' => now(),
                 'updated_at' => now(),
-                'deleted_at' => now(),
+                'deleted_at' => null,
             ],
             [
                 'id_menu' => 8,
@@ -88,7 +88,7 @@ class MenuSeeder extends Seeder
                 'gambar_menu' => 'menu/image8.jpg',
                 'created_at' => now(),
                 'updated_at' => now(),
-                'deleted_at' => now(),
+                'deleted_at' => null,
             ],
             [
                 'id_menu' => 9,
@@ -98,7 +98,7 @@ class MenuSeeder extends Seeder
                 'gambar_menu' => 'menu/image9.jpg',
                 'created_at' => now(),
                 'updated_at' => now(),
-                'deleted_at' => now(),
+                'deleted_at' => null,
             ],
             [
                 'id_menu' => 10,
@@ -108,7 +108,7 @@ class MenuSeeder extends Seeder
                 'gambar_menu' => 'menu/image10.jpg',
                 'created_at' => now(),
                 'updated_at' => now(),
-                'deleted_at' => now(),
+                'deleted_at' => null,
             ],
         ]);
     }

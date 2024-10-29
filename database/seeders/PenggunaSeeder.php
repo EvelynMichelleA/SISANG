@@ -96,7 +96,7 @@ class PenggunaSeeder extends Seeder
                 'nama_pengguna' => 'Tina Setyowati',
                 'created_at' => now(),
                 'updated_at' => now(),
-                'deleted_at' => now(),
+                'deleted_at' => null,
             ],
             [
                 'id_pengguna' => 9,
@@ -107,7 +107,7 @@ class PenggunaSeeder extends Seeder
                 'nama_pengguna' => 'Fandi Rahman',
                 'created_at' => now(),
                 'updated_at' => now(),
-                'deleted_at' => now(),
+                'deleted_at' => null,
             ],
             [
                 'id_pengguna' => 10,
@@ -118,7 +118,7 @@ class PenggunaSeeder extends Seeder
                 'nama_pengguna' => 'Lina Marlina',
                 'created_at' => now(),
                 'updated_at' => now(),
-                'deleted_at' => now(),
+                'deleted_at' => null,
             ],
         ]);
     }
