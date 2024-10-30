@@ -9,7 +9,7 @@ class PenggunaSeeder extends Seeder
 {
     public function run()
     {
-        DB::table('pengguna')->insert([
+        DB::table('users')->insert([
             [
                 'id_pengguna' => 1,
                 'id_role' => 1,

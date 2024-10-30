@@ -11,7 +11,7 @@ return new class extends Migration
         Schema::create('pengeluaran', function (Blueprint $table) {
             $table->id('id_pengeluaran');
             $table->unsignedBigInteger('id_pengguna');
-            $table->foreign('id_pengguna')->references('id_pengguna')->on('pengguna')->onDelete('cascade');
+            $table->foreign('id_pengguna')->references('id_pengguna')->on('users')->onDelete('cascade');
             $table->string('nama_pengeluaran');
             $table->float('total_pengeluaran', 10, 2);
             $table->timestamp('tanggal_pengeluaran')->useCurrent(); 
