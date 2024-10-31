@@ -1,4 +1,4 @@
-<x-guest-layout>
+{{-- <x-guest-layout>
     <div class="flex items-start justify-center h-screen">
         <div class="w-full max-w-md">
             <!-- Session Status -->
@@ -43,4 +43,4 @@
             </form>
         </div>
     </div>
-</x-guest-layout>
+</x-guest-layout> --}}
