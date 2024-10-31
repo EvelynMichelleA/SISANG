@@ -3,17 +3,17 @@
         {{ __('This is a secure area of the application. Please confirm your password before continuing.') }}
     </div>
 
-    <form method="POST" action="{{ route('kata_sandi.confirm') }}">
+    <form method="POST" action="{{ route('password.confirm') }}">
         @csrf
         <div>
-            <x-input-label for="kata_sandi" :value="__('Kata Sandi')" />
+            <x-input-label for="password" :value="__('password')" />
 
-            <x-text-input id="kata_sandi" class="block mt-1 w-full"
+            <x-text-input id="password" class="block mt-1 w-full"
                             type="password"
-                            name="kata_sandi"
+                            name="password"
                             required autocomplete="current-password" />
 
-            <x-input-error :messages="$errors->get('kata_sandi')" class="mt-2" />
+            <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
 
         <div class="flex justify-end mt-4">

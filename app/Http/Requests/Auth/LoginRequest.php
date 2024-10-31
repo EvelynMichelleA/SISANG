@@ -27,8 +27,8 @@ class LoginRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'username' => ['required', 'string', 'max:255'], // Changed 'email_pengguna' to 'username'
-            'kata_sandi' => ['required', 'string'], // No change needed here
+            'username' => ['required', 'string', 'max:255'], 
+            'password' => ['required', 'string'], // No change needed here
         ];
     }
 
@@ -42,7 +42,7 @@ class LoginRequest extends FormRequest
         $this->ensureIsNotRateLimited();
 
         // Update the authentication method to use the new fields
-        if (! Auth::attempt($this->only('username', 'kata_sandi'), $this->boolean('remember'))) {
+        if (! Auth::attempt($this->only('username', 'password'), $this->boolean('remember'))) {
             RateLimiter::hit($this->throttleKey());
 
             throw ValidationException::withMessages([

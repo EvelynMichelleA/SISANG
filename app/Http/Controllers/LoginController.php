@@ -15,14 +15,14 @@ class LoginController extends Controller
     {
         $credentials = $request->validate([
             'username' => ['required', 'string'],
-            'kata_sandi' => ['required', 'string'],
+            'password' => ['required', 'string'], // Pastikan field ini sesuai dengan input di form login
         ]);
 
         // Adjust credentials to match Laravel's default password field for authentication
-        if (Auth::attempt(['username' => $credentials['username'], 'password' => $credentials['kata_sandi']])) {
+        if (Auth::attempt(['username' => $credentials['username'], 'password' => $credentials['password']])) {
             $request->session()->regenerate();
 
-            return redirect()->intended('dashboard');
+            return redirect()->intended('dashboard'); // Pastikan rute ini ada
         }
 
         return back()->withErrors([

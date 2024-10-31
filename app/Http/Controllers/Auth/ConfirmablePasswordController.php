@@ -26,14 +26,14 @@ class ConfirmablePasswordController extends Controller
     {
         $credentials = [
             'username' => $request->user()->username,
-            'password' => $request->input('kata_sandi'),
+            'password' => $request->input('password'),
         ];
 
         // Attempt to confirm the user's password using the provided credentials.
         if (! Auth::guard('web')->attempt($credentials)) {
             // If validation fails, throw an exception with an error message.
             throw ValidationException::withMessages([
-                'kata_sandi' => __('auth.password'),
+                'password' => __('auth.password'),
             ]);
         }
 

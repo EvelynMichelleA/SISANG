@@ -13,7 +13,7 @@ return new class extends Migration
             $table->unsignedBigInteger('id_role');
             $table->foreign('id_role')->references('id_role')->on('role')->onDelete('cascade');
             $table->string('username')->unique();
-            $table->string('kata_sandi');
+            $table->string('password');
             $table->string('email_pengguna')->unique();
             $table->string('nama_pengguna');
             $table->timestamps();
