@@ -38,25 +38,25 @@
 
         .sanguku-text-background {
             position: absolute;
-            top: 35%; /* Sesuaikan posisi vertikal */
+            top: 35%;
             left: 50%;
-            transform: translateX(-50%); /* Center secara horizontal */
+            transform: translateX(-50%);
             font-family: 'Comic Sans MS', cursive, sans-serif;
-            font-size: 5em; /* Ukuran font besar */
+            font-size: 5em;
             font-weight: bold;
-            color: white; /* Warna teks putih agar kontras dengan background */
-            z-index: 2; /* Pastikan di atas gambar */
+            color: white;
+            z-index: 2;
         }
 
         .info-text {
             position: absolute;
-            top: 50%; /* Sesuaikan posisi vertikal di bawah 'SANGUKU' */
+            top: 50%;
             left: 50%;
-            transform: translateX(-50%); /* Center secara horizontal */
+            transform: translateX(-50%);
             font-family: Arial, sans-serif;
-            font-size: 1.5em; /* Ukuran font untuk teks informasi */
-            color: white; /* Warna teks putih agar kontras dengan background */
-            z-index: 2; /* Pastikan di atas gambar */
+            font-size: 1.5em;
+            color: white;
+            z-index: 2;
         }
 
         .right {
@@ -135,15 +135,15 @@
         }
 
         .remember-me {
-            text-align: left; /* Atur teks menjadi rata kiri */
-            margin-bottom: 20px; /* Tambahkan jarak di bawah jika perlu */
+            text-align: left;
+            margin-bottom: 20px;
         }
 
         .error-message {
-            color: red; /* Warna merah untuk pesan kesalahan */
-            margin-top: 20px; /* Jarak atas untuk memisahkan dari elemen lain */
-            font-size: 0.9em; /* Ukuran font untuk pesan kesalahan */
-            text-align: center; /* Rata tengah */
+            color: red;
+            margin-top: 20px;
+            font-size: 0.9em;
+            text-align: center;
         }
     </style>
 </head>
@@ -151,8 +151,8 @@
 <body>
     <div class="container">
         <div class="left">
-            <div class="sanguku-text-background">SANGUKU</div> <!-- Teks ditambahkan di sini -->
-            <div class="info-text">Sistem Informasi Sanguku Cafe</div> <!-- Teks informasi ditambahkan di sini -->
+            <div class="sanguku-text-background">SANGUKU</div>
+            <div class="info-text">Sistem Informasi Sanguku Cafe</div>
         </div>
         <div class="right">
             <div class="login-form">
@@ -179,11 +179,14 @@
                 <form action="/login" method="post">
                     @csrf
                     <div class="form-floating">
-                        <input type="text" name="username" class="form-control @error('username') is-invalid @enderror" id="username" placeholder="Username" required value="{{ old('username') }}">
+                        <input type="text" name="username"
+                            class="form-control @error('username') is-invalid @enderror" id="username"
+                            placeholder="Username" required value="{{ old('username') }}">
                     </div>
 
                     <div class="form-floating">
-                        <input type="password" name="password" class="form-control" id="password" placeholder="Password" required>
+                        <input type="password" name="password" class="form-control" id="password"
+                            placeholder="Password" required>
                     </div>
 
                     <div class="remember-me">
@@ -198,7 +201,7 @@
                     </div>
 
                     <button type="submit">Log in</button>
-                    
+
                     <!-- Pesan Kesalahan -->
                     @error('username')
                         <div class="error-message">{{ $message }}</div>

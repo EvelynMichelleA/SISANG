@@ -2,17 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User; // Pastikan model User diimport
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class PenggunaController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        // Ambil semua data pengguna dan relasi role
-        $pengguna = User::with('role')->get();
-
-        // Kirim data pengguna ke view
-        return view('pengguna.index', compact('pengguna'));
+        $search = $request->input('search');
+        $pengguna = User::with('role')
+            ->when($search, function ($query, $search) {
+                $query->where('username', 'like', "%{$search}%");
+            })
+            ->get();
+        return view('pengguna.index', compact('pengguna', 'search'));
     }
 }

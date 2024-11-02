@@ -3,16 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Menu; // Pastikan Anda telah membuat model Menu
+use App\Models\Menu;
 
 class MenuController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        // Mengambil semua data dari tabel 'menu'
-        $menu = Menu::all();
+        $search = $request->input('search');
+        $menu = Menu::when($search, function ($query, $search) {
+            return $query->where('nama_menu', 'like', $search . '%');
+        })->paginate(10);
 
-        // Mengirim data 'menu' ke view 'menu.index'
-        return view('menu.index', compact('menu'));
+        return view('menu.index', compact('menu', 'search'));
     }
 }

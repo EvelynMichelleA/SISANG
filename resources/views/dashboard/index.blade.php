@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,6 +24,7 @@
             text-align: center;
             font-size: 24px;
             font-weight: bold;
+            font-family: 'Comic Sans MS';
             color: #ffffff;
             margin-bottom: 30px;
         }
@@ -60,10 +62,11 @@
         .content {
             margin-left: 270px;
             padding: 20px;
+            background-color: #DEEFFE;
         }
 
         .header {
-            font-size: 24px;
+            font-size: 28px;
             font-weight: bold;
             color: #1e3a8a;
             margin-bottom: 20px;
@@ -73,6 +76,7 @@
             display: flex;
             gap: 20px;
             flex-wrap: wrap;
+            margin-bottom: 15px;
         }
 
         .card {
@@ -113,6 +117,7 @@
         }
     </style>
 </head>
+
 <body>
     <!-- Sidebar -->
     <div class="sidebar">
@@ -164,8 +169,10 @@
         <!-- Content Section -->
         <div class="header mt-8">Penjualan Bulan Ini</div>
         <div>
-            <img src="https://storage.googleapis.com/a1aa/image/XkOVfE7tSWRVa61CucZJky2BDPK8o5mf5fNNOPs8nkKVjrYnA.jpg" alt="Sales Chart" width="100%" style="border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+            <img src="https://storage.googleapis.com/a1aa/image/XkOVfE7tSWRVa61CucZJky2BDPK8o5mf5fNNOPs8nkKVjrYnA.jpg"
+                alt="Sales Chart" width="100%" style="border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
         </div>
     </div>
 </body>
+
 </html>

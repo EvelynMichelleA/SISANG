@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,6 +23,7 @@
             text-align: center;
             font-size: 24px;
             font-weight: bold;
+            font-family: 'Comic Sans MS';
             color: #ffffff;
             margin-bottom: 30px;
         }
@@ -59,19 +61,93 @@
         .content {
             margin-left: 270px;
             padding: 20px;
+            position: relative;
+            background-color: #DEEFFE;
         }
 
+        .content h1 {
+            font-size: 28px;
+            font-weight: bold;
+            color: #1e3a8a;
+            display: inline-block;
+        }
+
+        .add-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: #3b82f6;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        /* Search Form */
+        .search-form {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .search-form input[type="text"] {
+            padding: 12px;
+            width: 100%;
+            max-width: 1200px;
+            border: 2px solid #000000;
+            border-radius: 25px;
+            padding-left: 45px;
+            font-size: 16px;
+            background-image: url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/svgs/solid/search.svg');
+            background-size: 20px;
+            background-position: 15px center;
+            background-repeat: no-repeat;
+        }
+
+        /* Table Styling */
         table {
             width: 100%;
             border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #ffffff;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
+            border: 5px solid #3b82f6;
         }
 
-        th, td {
-            padding: 10px;
+        th,
+        td {
+            padding: 15px;
             text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #1e3a8a;
+            color: #fff;
+            text-align: center;
+        }
+
+        td {
+            text-align: center;
+        }
+
+        .action-icons a {
+            color: #1e3a8a;
+            margin: 0 5px;
+            font-size: 18px;
+            text-decoration: none;
+        }
+
+        .action-icons a:hover {
+            color: #3b82f6;
         }
     </style>
 </head>
+
 <body>
     <!-- Sidebar -->
     <div class="sidebar">
@@ -129,8 +205,17 @@
 
     <!-- Content -->
     <div class="content">
-        <h1>Data Pengguna</h1>
-        <table border="1">
+        <h1>Pengguna</h1>
+        <a href="#" class="add-button">TAMBAH</a>
+
+        <!-- Search Form -->
+        <form action="{{ url('/pengguna') }}" method="GET" class="search-form" id="searchForm">
+            <input type="text" name="search" value="{{ request('search') }}" placeholder="Cari ..."
+                id="searchInput">
+        </form>
+
+        <!-- User Table -->
+        <table>
             <thead>
                 <tr>
                     <th>ID</th>
@@ -138,20 +223,48 @@
                     <th>Email</th>
                     <th>Nama Pengguna</th>
                     <th>Role</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach($pengguna as $user)
+                @foreach ($pengguna as $user)
                     <tr>
                         <td>{{ $user->id_pengguna }}</td>
                         <td>{{ $user->username }}</td>
                         <td>{{ $user->email_pengguna }}</td>
                         <td>{{ $user->nama_pengguna }}</td>
                         <td>{{ $user->role->nama_role }}</td>
+                        <td class="action-icons">
+                            <a href="/pengguna/{{ $user->id_pengguna }}/edit"><i class="fas fa-edit"></i></a>
+                            <a href="/pengguna/{{ $user->id_pengguna }}"><i class="fas fa-eye"></i></a>
+                            <a href="/pengguna/{{ $user->id_pengguna }}/delete"><i class="fas fa-trash-alt"></i></a>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
     </div>
+
+    <script>
+        function debounce(func, delay) {
+            let timeoutId;
+            return function(...args) {
+                if (timeoutId) {
+                    clearTimeout(timeoutId);
+                }
+                timeoutId = setTimeout(() => {
+                    func.apply(this, args);
+                }, delay);
+            };
+        }
+        const searchInput = document.getElementById('searchInput');
+        const searchForm = document.getElementById('searchForm');
+
+        searchInput.addEventListener('keyup', debounce(function() {
+            searchForm.submit();
+        }, 500));
+    </script>
+
 </body>
+
 </html>
