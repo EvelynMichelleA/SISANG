@@ -227,7 +227,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($pengguna as $user)
+                @foreach ($user as $user)
                     <tr>
                         <td>{{ $user->id_pengguna }}</td>
                         <td>{{ $user->username }}</td>

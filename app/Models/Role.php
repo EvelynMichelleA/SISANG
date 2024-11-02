@@ -11,4 +11,10 @@ class Role extends Model
 
     protected $table = 'role'; // Nama tabel di database
     protected $primaryKey = 'id_role';
+
+    // Relasi One-to-Many dengan model User
+    // public function user()
+    // {
+    //     return $this->hasMany(user::class, 'role_id', 'id_role');
+    // }
 }

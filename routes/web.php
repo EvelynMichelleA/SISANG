@@ -5,7 +5,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LaporanPengeluaranController;
 use App\Http\Controllers\LaporanTransaksiPenjualanController;
-use App\Http\Controllers\PenggunaController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\PengeluaranController;
@@ -20,7 +20,7 @@ Route::get('/login', [LoginController::class, 'index'])->name('login')->middlewa
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-Route::get('/pengguna', [PenggunaController::class, 'index'])->name('pengguna.index');
+Route::get('/pengguna', [UserController::class, 'index'])->name('user.index');
 Route::get('/menu', [MenuController::class, 'index'])->name('menu.index');
 Route::get('/pelanggan', [PelangganController::class, 'index'])->name('pelanggan.index');
 Route::get('/pengeluaran', [PengeluaranController::class, 'index'])->name('pengeluaran.index');

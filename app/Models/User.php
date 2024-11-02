@@ -2,71 +2,29 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable;
+    use HasFactory;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
-    protected $table = 'users';
+    protected $table = 'users'; // Nama tabel di database
     protected $primaryKey = 'id_pengguna';
-
+    
     public function role()
     {
-        return $this->belongsTo(Role::class, 'id_role', 'id_role');
+        return $this->belongsTo(Role::class,  'id_role');
     }
-    
+
     protected $fillable = [
         'nama_pengguna',
-        'username',
+        'username', // Pastikan ini sesuai dengan kolom di tabel users
         'email_pengguna',
         'password',
-        'id_role',
+        'id_role', // Kolom role_id untuk relasi dengan Role
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
-
-    /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
-
-    /**
-     * Get the password for the user.
-     *
-     * @return string
-     */
-    public function getAuthPassword()
-    {
-        return $this->password;
-    }
-
-    /**
-     * Specify the custom username field for authentication.
-     *
-     * @return string
-     */
-    public function getAuthIdentifierName()
-    {
-        return 'username';
-    }
+    // Relasi ke model Role
+   
 }
