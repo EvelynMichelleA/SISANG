@@ -1,156 +1,171 @@
-<html>
- <head>
-  <title>
-   Dashboard
-  </title>
-  <script src="https://cdn.tailwindcss.com">
-  </script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet"/>
-  <style>
-   body {
-            font-family: 'Roboto', sans-serif;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - SANGUKU</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Styling Sidebar */
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            background-color: #1e3a8a;
+            color: #fff;
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding: 20px 0;
+            overflow-y: auto;
         }
-  </style>
- </head>
- <body class="bg-gray-100">
-  <div class="flex">
-   <!-- Sidebar -->
-   <div class="w-1/4 bg-blue-800 text-white h-screen p-5">
-    <div class="text-3xl font-bold mb-10" style="font-family: 'Comic Sans MS', sans-serif;">
-        SANGUKU
-      </div>
-    <ul>
-     <li class="mb-4">
-      <a class="flex items-center p-2 bg-blue-600 rounded" href="#">
-       <i class="fas fa-home mr-3">
-       </i>
-       Beranda
-      </a>
-     </li>
-     <li class="mb-4">
-      <a class="flex items-center p-2" href="#">
-       <i class="fas fa-users mr-3">
-       </i>
-       Kelola Pengguna
-      </a>
-     </li>
-     <li class="mb-4">
-      <a class="flex items-center p-2" href="#">
-       <i class="fas fa-exchange-alt mr-3">
-       </i>
-       Kelola Transaksi Penjualan
-      </a>
-     </li>
-     <li class="mb-4">
-      <a class="flex items-center p-2" href="#">
-       <i class="fas fa-wallet mr-3">
-       </i>
-       Kelola Pengeluaran
-      </a>
-     </li>
-     <li class="mb-4">
-      <a class="flex items-center p-2" href="#">
-       <i class="fas fa-utensils mr-3">
-       </i>
-       Kelola Menu
-      </a>
-     </li>
-     <li class="mb-4">
-      <a class="flex items-center p-2" href="#">
-       <i class="fas fa-user-friends mr-3">
-       </i>
-       Kelola Pelanggan
-      </a>
-     </li>
-     <li class="mb-4">
-      <a class="flex items-center p-2" href="#">
-       <i class="fas fa-file-alt mr-3">
-       </i>
-       Laporan Transaksi Penjualan
-      </a>
-     </li>
-     <li class="mb-4">
-      <a class="flex items-center p-2" href="#">
-       <i class="fas fa-file-invoice-dollar mr-3">
-       </i>
-       Laporan Pengeluaran
-      </a>
-     </li>
-    </ul>
-    <div class="mt-auto">
-     <a class="flex items-center p-2" href="#">
-      <i class="fas fa-power-off mr-3">
-      </i>
-      Logout
-     </a>
+
+        .sidebar-header {
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: #ffffff;
+            margin-bottom: 30px;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar-menu li {
+            margin-bottom: 15px;
+        }
+
+        .sidebar-menu a {
+            display: flex;
+            align-items: center;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .sidebar-menu a i {
+            margin-right: 10px;
+        }
+
+        .sidebar-menu a.active,
+        .sidebar-menu a:hover {
+            background-color: #3b82f6;
+        }
+
+        /* Styling Content */
+        .content {
+            margin-left: 270px;
+            padding: 20px;
+        }
+
+        .header {
+            font-size: 24px;
+            font-weight: bold;
+            color: #1e3a8a;
+            margin-bottom: 20px;
+        }
+
+        .card-container {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            flex: 1;
+            min-width: 200px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+        }
+
+        .card-icon {
+            background-color: #3b82f6;
+            color: #fff;
+            padding: 15px;
+            border-radius: 50%;
+            font-size: 24px;
+            margin-right: 15px;
+        }
+
+        .card-content {
+            color: #333;
+        }
+
+        .card-content h3 {
+            font-size: 18px;
+            margin: 0;
+            color: #666;
+        }
+
+        .card-content p {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 0;
+            color: #1e3a8a;
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h2>SANGUKU</h2>
+        </div>
+        <ul class="sidebar-menu">
+            <li><a href="/dashboard" class="active"><i class="fas fa-home"></i> Beranda</a></li>
+            <li><a href="/pengguna"><i class="fas fa-users"></i> Kelola Pengguna</a></li>
+            <li><a href="/transaksi-penjualan"><i class="fas fa-exchange-alt"></i> Kelola Transaksi Penjualan</a></li>
+            <li><a href="/pengeluaran"><i class="fas fa-wallet"></i> Kelola Pengeluaran</a></li>
+            <li><a href="/menu"><i class="fas fa-utensils"></i> Kelola Menu</a></li>
+            <li><a href="/pelanggan"><i class="fas fa-user-friends"></i> Kelola Pelanggan</a></li>
+            <li><a href="/laporan-transaksi"><i class="fas fa-file-alt"></i> Laporan Transaksi Penjualan</a></li>
+            <li><a href="/laporan-pengeluaran"><i class="fas fa-file-invoice"></i> Laporan Pengeluaran</a></li>
+            <li><a href="/logout"><i class="fas fa-power-off"></i> Logout</a></li>
+        </ul>
     </div>
-   </div>
-   <!-- Main Content -->
-   <div class="w-3/4 p-10">
-    <div class="flex items-center justify-between mb-10">
-     <div class="text-2xl font-bold">
-      Beranda
-     </div>
-     <i class="fas fa-bars text-2xl">
-     </i>
+
+    <!-- Content -->
+    <div class="content">
+        <div class="header">Dashboard</div>
+
+        <!-- Card Container -->
+        <div class="card-container">
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-users"></i></div>
+                <div class="card-content">
+                    <h3>Pelanggan</h3>
+                    <p>250</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-clipboard-list"></i></div>
+                <div class="card-content">
+                    <h3>Pendapatan</h3>
+                    <p>Rp 15,000,000</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-shopping-cart"></i></div>
+                <div class="card-content">
+                    <h3>Transaksi</h3>
+                    <p>340</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Content Section -->
+        <div class="header mt-8">Penjualan Bulan Ini</div>
+        <div>
+            <img src="https://storage.googleapis.com/a1aa/image/XkOVfE7tSWRVa61CucZJky2BDPK8o5mf5fNNOPs8nkKVjrYnA.jpg" alt="Sales Chart" width="100%" style="border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+        </div>
     </div>
-    <div class="bg-blue-100 p-5 rounded-lg">
-     <div class="text-2xl font-bold mb-5">
-      Selamat Datang, User!
-     </div>
-     <div class="grid grid-cols-3 gap-4 mb-10">
-      <div class="bg-white p-5 rounded-lg shadow flex items-center">
-       <div class="bg-blue-600 text-white p-3 rounded-full mr-4">
-        <i class="fas fa-users text-2xl">
-        </i>
-       </div>
-       <div>
-        <div class="text-gray-500">
-         Pelanggan
-        </div>
-        <div class="text-2xl font-bold">
-         2
-        </div>
-       </div>
-      </div>
-      <div class="bg-white p-5 rounded-lg shadow flex items-center">
-       <div class="bg-blue-600 text-white p-3 rounded-full mr-4">
-        <i class="fas fa-clipboard-list text-2xl">
-        </i>
-       </div>
-       <div>
-        <div class="text-gray-500">
-         Pendapatan
-        </div>
-        <div class="text-2xl font-bold">
-         4
-        </div>
-       </div>
-      </div>
-      <div class="bg-white p-5 rounded-lg shadow flex items-center">
-       <div class="bg-blue-600 text-white p-3 rounded-full mr-4">
-        <i class="fas fa-shopping-cart text-2xl">
-        </i>
-       </div>
-       <div>
-        <div class="text-gray-500">
-         Transaksi
-        </div>
-        <div class="text-2xl font-bold">
-         4
-        </div>
-       </div>
-      </div>
-     </div>
-     <div class="bg-white p-5 rounded-lg shadow">
-      <div class="text-xl font-bold mb-5">
-       Penjualan Bulan Ini
-      </div>
-      <img alt="Bar chart showing sales data for the current month" height="400" src="https://storage.googleapis.com/a1aa/image/XkOVfE7tSWRVa61CucZJky2BDPK8o5mf5fNNOPs8nkKVjrYnA.jpg" width="600"/>
-     </div>
-    </div>
-   </div>
-  </div>
- </body>
+</body>
 </html>

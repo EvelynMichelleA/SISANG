@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Menu</title>
+    <title>Data Pelanggan</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         /* Styling Sidebar */
@@ -16,6 +16,7 @@
             top: 0;
             left: 0;
             padding: 20px 0;
+            overflow-y: auto;
         }
 
         .sidebar-header {
@@ -89,8 +90,8 @@
             <li><a href="/pengguna"><i class="fas fa-users"></i> Kelola Pengguna</a></li>
             <li><a href="/transaksi-penjualan"><i class="fas fa-exchange-alt"></i> Kelola Transaksi Penjualan</a></li>
             <li><a href="/pengeluaran"><i class="fas fa-wallet"></i> Kelola Pengeluaran</a></li>
-            <li><a href="/menu" class="active"><i class="fas fa-utensils"></i> Kelola Menu</a></li>
-            <li><a href="/pelanggan"><i class="fas fa-user-friends"></i> Kelola Pelanggan</a></li>
+            <li><a href="/menu"><i class="fas fa-utensils"></i> Kelola Menu</a></li>
+            <li><a href="/pelanggan" class="active"><i class="fas fa-user-friends"></i> Kelola Pelanggan</a></li>
             <li><a href="/laporan-transaksi"><i class="fas fa-file-alt"></i> Laporan Transaksi Penjualan</a></li>
             <li><a href="/laporan-pengeluaran"><i class="fas fa-file-invoice"></i> Laporan Pengeluaran</a></li>
             <li><a href="/logout"><i class="fas fa-power-off"></i> Logout</a></li>
@@ -99,25 +100,25 @@
 
     <!-- Content -->
     <div class="content">
-        <h1>Data Menu</h1>
+        <h1>Data Pelanggan</h1>
         <table>
             <thead>
                 <tr>
-                    <th>ID Menu</th>
-                    <th>Nama Menu</th>
-                    <th>Harga</th>
-                    <th>Jenis Menu</th>
-                    <th>Gambar Menu</th>
+                    <th>ID Pelanggan</th>
+                    <th>Nama Pelanggan</th>
+                    <th>Nomor Telepon</th>
+                    <th>Email Pelanggan</th>
+                    <th>Jumlah Poin</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach($menu as $item)
+                @foreach($pelanggan as $customer)
                     <tr>
-                        <td>{{ $item->id_menu }}</td>
-                        <td>{{ $item->nama_menu }}</td>
-                        <td>Rp {{ number_format($item->harga, 0, ',', '.') }}</td>
-                        <td>{{ $item->jenis_menu }}</td>
-                        <td><img src="{{ asset($item->gambar_menu) }}" alt="Gambar Menu" width="50"></td>
+                        <td>{{ $customer->id_pelanggan }}</td>
+                        <td>{{ $customer->nama_pelanggan }}</td>
+                        <td>{{ $customer->nomor_telepon }}</td>
+                        <td>{{ $customer->email_pelanggan }}</td>
+                        <td>{{ $customer->jumlah_poin }}</td>
                     </tr>
                 @endforeach
             </tbody>

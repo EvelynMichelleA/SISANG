@@ -63,6 +63,20 @@ class LoginController extends Controller
         ])->onlyInput('username');
     }
 
+    protected function authenticated(Request $request, $user)
+{
+    if ($user->role == 'Kasir') {
+        return redirect()->route('kasir.dashboard');
+    } elseif ($user->role == 'Owner') {
+        return redirect()->route('owner.dashboard');
+    } elseif ($user->role == 'Supervisor') {
+        return redirect()->route('supervisor.dashboard');
+    }
+
+    return redirect('/'); // Arahkan ke halaman utama jika tidak ada role yang cocok
+}
+
+
     protected function redirectTo()
     {
         return '/dashboard';

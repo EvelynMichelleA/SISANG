@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Menu</title>
+    <title>Data Pengguna</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         /* Styling Sidebar */
@@ -69,12 +69,6 @@
         th, td {
             padding: 10px;
             text-align: left;
-            border: 1px solid #ddd;
-        }
-
-        th {
-            background-color: #1e3a8a;
-            color: #fff;
         }
     </style>
 </head>
@@ -85,39 +79,75 @@
             <h2>SANGUKU</h2>
         </div>
         <ul class="sidebar-menu">
-            <li><a href="/dashboard"><i class="fas fa-home"></i> Beranda</a></li>
-            <li><a href="/pengguna"><i class="fas fa-users"></i> Kelola Pengguna</a></li>
-            <li><a href="/transaksi-penjualan"><i class="fas fa-exchange-alt"></i> Kelola Transaksi Penjualan</a></li>
-            <li><a href="/pengeluaran"><i class="fas fa-wallet"></i> Kelola Pengeluaran</a></li>
-            <li><a href="/menu" class="active"><i class="fas fa-utensils"></i> Kelola Menu</a></li>
-            <li><a href="/pelanggan"><i class="fas fa-user-friends"></i> Kelola Pelanggan</a></li>
-            <li><a href="/laporan-transaksi"><i class="fas fa-file-alt"></i> Laporan Transaksi Penjualan</a></li>
-            <li><a href="/laporan-pengeluaran"><i class="fas fa-file-invoice"></i> Laporan Pengeluaran</a></li>
-            <li><a href="/logout"><i class="fas fa-power-off"></i> Logout</a></li>
+            <li>
+                <a href="/dashboard">
+                    <i class="fas fa-home"></i> Beranda
+                </a>
+            </li>
+            <li>
+                <a href="/pengguna" class="active">
+                    <i class="fas fa-users"></i> Kelola Pengguna
+                </a>
+            </li>
+            <li>
+                <a href="/transaksi-penjualan">
+                    <i class="fas fa-exchange-alt"></i> Kelola Transaksi Penjualan
+                </a>
+            </li>
+            <li>
+                <a href="/pengeluaran">
+                    <i class="fas fa-wallet"></i> Kelola Pengeluaran
+                </a>
+            </li>
+            <li>
+                <a href="/menu">
+                    <i class="fas fa-utensils"></i> Kelola Menu
+                </a>
+            </li>
+            <li>
+                <a href="/pelanggan">
+                    <i class="fas fa-user-friends"></i> Kelola Pelanggan
+                </a>
+            </li>
+            <li>
+                <a href="/laporan-transaksi">
+                    <i class="fas fa-file-alt"></i> Laporan Transaksi Penjualan
+                </a>
+            </li>
+            <li>
+                <a href="/laporan-pengeluaran">
+                    <i class="fas fa-file-invoice"></i> Laporan Pengeluaran
+                </a>
+            </li>
+            <li>
+                <a href="/logout">
+                    <i class="fas fa-power-off"></i> Logout
+                </a>
+            </li>
         </ul>
     </div>
 
     <!-- Content -->
     <div class="content">
-        <h1>Data Menu</h1>
-        <table>
+        <h1>Data Pengguna</h1>
+        <table border="1">
             <thead>
                 <tr>
-                    <th>ID Menu</th>
-                    <th>Nama Menu</th>
-                    <th>Harga</th>
-                    <th>Jenis Menu</th>
-                    <th>Gambar Menu</th>
+                    <th>ID</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Nama Pengguna</th>
+                    <th>Role</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach($menu as $item)
+                @foreach($pengguna as $user)
                     <tr>
-                        <td>{{ $item->id_menu }}</td>
-                        <td>{{ $item->nama_menu }}</td>
-                        <td>Rp {{ number_format($item->harga, 0, ',', '.') }}</td>
-                        <td>{{ $item->jenis_menu }}</td>
-                        <td><img src="{{ asset($item->gambar_menu) }}" alt="Gambar Menu" width="50"></td>
+                        <td>{{ $user->id_pengguna }}</td>
+                        <td>{{ $user->username }}</td>
+                        <td>{{ $user->email_pengguna }}</td>
+                        <td>{{ $user->nama_pengguna }}</td>
+                        <td>{{ $user->role->nama_role }}</td>
                     </tr>
                 @endforeach
             </tbody>
