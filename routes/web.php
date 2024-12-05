@@ -1,28 +1,41 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\LaporanPengeluaranController;
-use App\Http\Controllers\LaporanTransaksiPenjualanController;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\PenggunaController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\PelangganController;
-use App\Http\Controllers\PengeluaranController;
-use App\Models\Menu;
 use App\Http\Controllers\TransaksiPenjualanController;
+use App\Http\Controllers\LaporanPengeluaranController;
+use App\Http\Controllers\LaporanTransaksiPenjualanController;
 
-Route::get('/transaksi-penjualan', [TransaksiPenjualanController::class, 'index'])->name('transaksipenjualan.index');
-Route::get('/', function () {
-    return view('welcome');
+// Home route (Login page as default)
+Route::get('/', [LoginController::class, 'index'])->name('login');
+
+// Routes for login and logout
+Route::controller(LoginController::class)->group(function () {
+    Route::get('/login', 'index')->name('login.page');
+    Route::post('/login', 'login')->name('login.submit');
+    Route::post('/logout', 'logout')->name('logout');
+    Route::post('/reset-password/{id}', 'resetPass')->name('reset.password');
 });
-Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
-Route::post('/login', [LoginController::class, 'authenticate']);
-Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-Route::get('/pengguna', [UserController::class, 'index'])->name('user.index');
-Route::get('/menu', [MenuController::class, 'index'])->name('menu.index');
-Route::get('/pelanggan', [PelangganController::class, 'index'])->name('pelanggan.index');
-Route::get('/pengeluaran', [PengeluaranController::class, 'index'])->name('pengeluaran.index');
-Route::get('/laporan-transaksi', [LaporanTransaksiPenjualanController::class, 'index']);
-Route::get('/laporan-pengeluaran', [LaporanPengeluaranController::class, 'index']);
+
+// Routes protected by 'auth' middleware
+Route::middleware(['auth'])->group(function () {
+    // Dashboard
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+    // Data Master Routes - Restricted to roles: Owner and Supervisor
+    Route::prefix('master')->middleware('role:Owner,Supervisor')->group(function () {
+        Route::resource('pengguna', PenggunaController::class)->except(['show']);
+        Route::resource('menu', MenuController::class)->except(['show']);
+        Route::resource('pelanggan', PelangganController::class)->except(['show']);
+        Route::get('/laporantransaksipenjualan', [LaporanTransaksiPenjualanController::class, 'index'])->name('laporantransaksipenjualan.index');
+        Route::get('/laporanpengeluaran', [LaporanPengeluaranController::class, 'index'])->name('laporanpengeluaran.index');
+    });
+
+    // Transaction Routes - Accessible to all authenticated users
+    Route::prefix('transaksi-penjualan')->group(function () {
+        Route::get('/', [TransaksiPenjualanController::class, 'index'])->name('transaksi-penjualan.index');
+    });
+});

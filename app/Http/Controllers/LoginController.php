@@ -4,42 +4,65 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
+use App\Models\User;
 
 class LoginController extends Controller
 {
+    // Tampilkan halaman login
     public function index()
     {
-        return view('login.index');
+        Log::info('Halaman login ditampilkan');
+        return view('auth.login');
     }
 
-    public function authenticate(Request $request)
+    // Proses login
+    public function login(Request $request)
     {
-        $credentials = $request->validate([
+        Log::info('Memulai proses login');
+        
+        // Validasi input
+        $request->validate([
             'username' => 'required|string',
             'password' => 'required|string',
         ]);
+        
+        $loginInput = $request->input('username');
+        $fieldType = filter_var($loginInput, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+        Log::info("Tipe input login: {$fieldType}");
 
-        // Autentikasi pengguna
-        if (Auth::attempt($credentials)) {
-            // Regenerate session untuk keamanan
-            $request->session()->regenerate();
+        // Cari user berdasarkan input username atau email
+        $user = User::where($fieldType, $loginInput)->first();
 
-            // Redirect ke dashboard setelah login berhasil
-            return redirect()->intended('/dashboard');
+        if ($user && Hash::check($request->input('password'), $user->password)) {
+            Log::info("Autentikasi berhasil untuk user: {$user->username}");
+            Auth::login($user);
+
+            // Cek apakah user sudah login dengan benar
+            if (Auth::check()) {
+                Log::info("User berhasil login, redirect ke dashboard.");
+                return redirect()->route('dashboard'); // Pastikan route dashboard ada
+            } else {
+                Log::error("Auth::check() gagal setelah Auth::login()");
+                return redirect()->route('login.page')->with('loginError', 'Gagal otentikasi, coba lagi.');
+            }
         }
 
-        // Jika login gagal, kembalikan ke halaman login dengan pesan error
-        return back()->withErrors([
-            'loginError' => 'Username atau password salah',
-        ])->onlyInput('username');
+        Log::error("Autentikasi gagal untuk input: {$loginInput}");
+        return redirect()->back()->with('loginError', 'Username/Email atau Password salah')->withInput();
     }
 
+    // Proses logout
     public function logout(Request $request)
     {
+        $user = Auth::user();
+        if ($user) {
+            Log::info("User '{$user->username}' melakukan logout");
+        }
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-
-        return redirect('/login');
+        return redirect()->route('login.page'); // Mengarahkan ke halaman login setelah logout
     }
 }

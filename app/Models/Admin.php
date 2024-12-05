@@ -2,16 +2,15 @@
 
 namespace App\Models;
 
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable
+class Admin extends Authenticatable
 {
     use HasFactory;
 
-    protected $guard = 'web';
-    protected $table = 'users'; // Nama tabel di database
-    protected $primaryKey = 'id_pengguna';
+    protected $guard = 'admin'; // Nama tabel di database
     
     public function role()
     {
@@ -26,5 +25,3 @@ class User extends Authenticatable
         'id_role', // Kolom role_id untuk relasi dengan Role
     ];
 }
-
-    // Relasi ke model Role

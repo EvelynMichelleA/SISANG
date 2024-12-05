@@ -229,15 +229,15 @@
             <tbody>
                 @foreach ($user as $user)
                     <tr>
-                        <td>{{ $user->id_pengguna }}</td>
-                        <td>{{ $user->username }}</td>
-                        <td>{{ $user->email_pengguna }}</td>
-                        <td>{{ $user->nama_pengguna }}</td>
-                        <td>{{ $user->role->nama_role }}</td>
+                        <td>{{ $users->id }}</td>
+                        <td>{{ $users->username }}</td>
+                        <td>{{ $users->email_pengguna }}</td>
+                        <td>{{ $users->nama_pengguna }}</td>
+                        <td>{{ $users->role->nama_role }}</td>
                         <td class="action-icons">
-                            <a href="/pengguna/{{ $user->id_pengguna }}/edit"><i class="fas fa-edit"></i></a>
-                            <a href="/pengguna/{{ $user->id_pengguna }}"><i class="fas fa-eye"></i></a>
-                            <a href="/pengguna/{{ $user->id_pengguna }}/delete"><i class="fas fa-trash-alt"></i></a>
+                            <a href="/pengguna/{{ $users->id }}/edit"><i class="fas fa-edit"></i></a>
+                            <a href="/pengguna/{{ $user->id }}"><i class="fas fa-eye"></i></a>
+                            <a href="/pengguna/{{ $user->id }}/delete"><i class="fas fa-trash-alt"></i></a>
                         </td>
                     </tr>
                 @endforeach
